@@ -5,6 +5,7 @@ query bookById {
     author {
       id
       name
+      country
     }
   }
 }

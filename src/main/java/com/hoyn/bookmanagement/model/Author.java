@@ -23,8 +23,6 @@ public class Author {
     @Column
     String name;
 
-    /*public Author(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }*/
+    @Column
+    String country;
 }

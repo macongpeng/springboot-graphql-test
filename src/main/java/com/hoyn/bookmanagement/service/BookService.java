@@ -10,15 +10,6 @@ import java.util.Optional;
 
 @Service
 public class BookService {
-    /*private List<Book> books = new ArrayList<>();
-
-    @PostConstruct
-    private void init() {
-        books.add(new Book(1, "Quran", 604, 3));
-        books.add(new Book(2, "Harry Potter", 700, 2));
-        books.add(new Book(3, "Foobar", 100, 1));
-        books.add(new Book(4, "Spring Boot", 344, 2));
-    }*/
     @Autowired
     private BookRepository bookRepository;
 

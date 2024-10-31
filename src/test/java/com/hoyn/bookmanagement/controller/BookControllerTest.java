@@ -46,6 +46,7 @@ class BookControllerTest {
         Author author = new Author();
         author.setId(3L);
         author.setName("Allah");
+        author.setCountry("US");
 
         Book book1 = new Book();
         book1.setId(1L);
