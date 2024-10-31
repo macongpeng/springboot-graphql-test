@@ -1,4 +1,4 @@
-package com.hoyn;
+package com.hoyn.bookmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

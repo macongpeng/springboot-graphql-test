@@ -1,9 +1,9 @@
-package com.hoyn.controller;
+package com.hoyn.bookmanagement.controller;
 
-import com.hoyn.model.Author;
-import com.hoyn.model.Book;
-import com.hoyn.service.AuthorService;
-import com.hoyn.service.BookService;
+import com.hoyn.bookmanagement.model.Author;
+import com.hoyn.bookmanagement.model.Book;
+import com.hoyn.bookmanagement.service.AuthorService;
+import com.hoyn.bookmanagement.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.GraphQlTest;

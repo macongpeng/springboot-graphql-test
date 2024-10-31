@@ -1,9 +1,9 @@
-package com.hoyn.controller;
+package com.hoyn.bookmanagement.controller;
 
-import com.hoyn.model.Author;
-import com.hoyn.model.Book;
-import com.hoyn.service.AuthorService;
-import com.hoyn.service.BookService;
+import com.hoyn.bookmanagement.model.Author;
+import com.hoyn.bookmanagement.model.Book;
+import com.hoyn.bookmanagement.service.AuthorService;
+import com.hoyn.bookmanagement.service.BookService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
@@ -34,6 +34,6 @@ public class BookController {
 
     @SchemaMapping
     public Optional<Author> author(Book book) {
-        return authorService.getAuthorById(book.getAuthorId());
+        return authorService.getAuthorById(book.getAuthor().getId());
     }
 }

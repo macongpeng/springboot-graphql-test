@@ -1,4 +1,4 @@
-package com.hoyn;
+package com.hoyn.bookmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

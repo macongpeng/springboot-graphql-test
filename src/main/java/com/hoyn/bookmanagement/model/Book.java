@@ -1,5 +1,6 @@
-package com.hoyn.model;
+package com.hoyn.bookmanagement.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,20 +8,33 @@ import lombok.Setter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+@Entity
 @Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "books")
 public class Book {
-    Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    Long id;
+
+    @Column
     String name;
+
+    @Column(name = "page_count")
     Integer pageCount;
-    Integer authorId;
-    public Book(Integer id, String name, Integer pageCount, Integer authorId) {
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id", nullable = false)
+    private Author author;
+
+    /*public Book(Long id, String name, Integer pageCount, Long authorId) {
         this.id = id;
         this.name = name;
         this.pageCount = pageCount;
         this.authorId = authorId;
-    }
+    }*/
     /*public static List<Book> books = Arrays.asList(
             new Book(1, "Quran", 604, 3),
             new Book(2, "Harry Potter", 700, 2),
