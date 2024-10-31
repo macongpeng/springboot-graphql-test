@@ -1,0 +1,10 @@
+query bookById {
+  bookById(id: 1) {
+    id
+    name
+    author {
+      id
+      name
+    }
+  }
+}

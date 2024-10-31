@@ -1,4 +1,4 @@
-package com.amigoscode;
+package com.hoyn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
