@@ -15,3 +15,13 @@ type Author {
     name: String
     country: String
 }
+
+type Mutation {
+    newBook(book: BookInput!): Book
+}
+
+input BookInput {
+    name: String!
+    pageCount: Int!
+    authorId: ID!
+}

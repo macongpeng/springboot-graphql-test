@@ -1,16 +1,14 @@
 package com.hoyn.bookmanagement.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 @Table(name = "authors")

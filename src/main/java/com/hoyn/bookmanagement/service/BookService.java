@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class BookService {
     @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -23,5 +23,11 @@ public class BookService {
 
     public Optional<Book> getBookById(Integer id) {
         return bookRepository.findById(id).stream().findFirst();
+    }
+
+    public Book save(Book book) {
+        Book savedBook;
+        savedBook = bookRepository.save(book);
+        return savedBook;
     }
 }

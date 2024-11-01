@@ -62,6 +62,7 @@ class BookControllerTest {
 
         when(bookRepository.findAll()).thenReturn(Arrays.asList(book1, book2));
         when(bookRepository.findById(anyInt())).thenReturn(Arrays.asList(book1));
+        when(bookRepository.save(any(Book.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         when(authorRepository.findById(any())).thenReturn(Optional.of(author));
     }
@@ -93,12 +94,6 @@ class BookControllerTest {
 
     @Test
     void canGetBookByIdWithCorrectAuthor() {
-        Book book = graphQlTester
-                .documentName("bookById")
-                .execute()
-                .path("bookById")
-                .entity(Book.class)
-                .get();
         graphQlTester
                 .documentName("bookById")
                 .execute()
@@ -110,5 +105,19 @@ class BookControllerTest {
                     //assertEquals(3,book.authorId());
                 });
 
+    }
+
+    @Test
+    void testNewBook() {
+        graphQlTester.documentName("newbook")
+                .execute()
+                .path("newBook")
+                .entity(Book.class)
+                .satisfies(book -> {
+                    assertEquals("New Book", book.getName());
+                    assertEquals(300, book.getPageCount());
+                    assertEquals(3L, book.getAuthor().getId());
+                    assertEquals("Allah", book.getAuthor().getName());
+                });
     }
 }

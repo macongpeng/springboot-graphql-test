@@ -1,0 +1,11 @@
+mutation {
+  newBook(book: { name: "New Book", pageCount: 300, authorId: 1 }) {
+    id
+    name
+    pageCount
+    author {
+      id
+      name
+    }
+  }
+}
