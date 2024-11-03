@@ -16,6 +16,7 @@ import org.springframework.graphql.test.tester.GraphQlTester;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -119,5 +120,15 @@ class BookControllerTest {
                     assertEquals(3L, book.getAuthor().getId());
                     assertEquals("Allah", book.getAuthor().getName());
                 });
+    }
+
+    @Test
+    void testNewBook_AuthorNotFound() {
+        when(authorRepository.findById(any())).thenReturn(Optional.empty());
+
+        graphQlTester.documentName("newbook")
+                .execute()
+                .errors()
+                .expect(error -> Objects.equals(error.getMessage(), "Author not found with id: 1"));
     }
 }

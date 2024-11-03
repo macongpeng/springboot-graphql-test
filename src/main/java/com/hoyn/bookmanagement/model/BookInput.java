@@ -2,8 +2,8 @@ package com.hoyn.bookmanagement.model;
 
 import lombok.*;
 
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class BookInput {
     private String name;
