@@ -3,12 +3,13 @@ package com.hoyn.bookmanagement.service;
 import com.hoyn.bookmanagement.model.Book;
 import com.hoyn.bookmanagement.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class BookService {
     @Autowired
     private final BookRepository bookRepository;
