@@ -5,17 +5,14 @@ import com.hoyn.bookmanagement.model.Book;
 import com.hoyn.bookmanagement.model.BookInput;
 import com.hoyn.bookmanagement.service.AuthorService;
 import com.hoyn.bookmanagement.service.BookService;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.graphql.data.method.annotation.SchemaMapping;
-import org.springframework.graphql.data.method.annotation.GraphQlExceptionHandler;
+import org.springframework.graphql.data.method.annotation.*;
 import org.springframework.graphql.execution.ErrorType;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -42,9 +39,9 @@ public class BookController {
         return bookService.getBookById(id);
     }
 
-    @SchemaMapping
-    public Optional<Author> author(Book book) {
-        return authorService.getAuthorById(book.getAuthor().getId());
+    @BatchMapping
+    public Map<Book, Author> author(List<Book> books) {
+        return authorService.getAuthors(books);
     }
 
     // New Mutation Mappings
