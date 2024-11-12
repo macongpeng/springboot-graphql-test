@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.hoyn.bookmanagement.config.CachingConfig.BOOK_CACHE;
+
 @Service
 public class BookService {
     @Autowired
@@ -19,17 +21,17 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    @Cacheable(value = "complete-response-cache", keyGenerator="customKeyGenerator")
+    @Cacheable(value = BOOK_CACHE, keyGenerator="customKeyGenerator")
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
 
-    @Cacheable(value = "complete-response-cache", key = "#id")
+    @Cacheable(value = BOOK_CACHE, key = "#id")
     public Optional<Book> getBookById(Integer id) {
         return bookRepository.findById(id).stream().findFirst();
     }
 
-    @CachePut(cacheNames = "complete-response-cache", key = "#book.id")
+    @CachePut(cacheNames = BOOK_CACHE, key = "#book.id")
     public Book save(Book book) {
         Book savedBook;
         savedBook = bookRepository.save(book);

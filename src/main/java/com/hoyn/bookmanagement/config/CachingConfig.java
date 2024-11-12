@@ -13,6 +13,7 @@ import static java.util.Arrays.asList;
 @EnableCaching
 public class CachingConfig {
 
+    public static final String BOOK_CACHE = "complete-response-cache";
     @Bean
     public CacheManager cacheManager() {
         ConcurrentMapCacheManager mgr = new ConcurrentMapCacheManager();

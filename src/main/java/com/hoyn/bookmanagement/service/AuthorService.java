@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.hoyn.bookmanagement.config.CachingConfig.BOOK_CACHE;
+
 @Service
 public class AuthorService {
     @Autowired
@@ -25,7 +27,7 @@ public class AuthorService {
         return authorRepository.findById(id);
     }
 
-    @Cacheable(value = "complete-response-cache", keyGenerator="customKeyGenerator")
+    @Cacheable(value = BOOK_CACHE, keyGenerator="customKeyGenerator")
     public Map<Book, Author> getAuthors(List<Book> books) {
         return books.stream()
                 .collect(Collectors.toMap(
